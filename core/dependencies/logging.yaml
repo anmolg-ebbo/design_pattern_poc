@@ -1,0 +1,31 @@
+version: 1
+disable_existing_loggers: False
+filters:
+  maskfilter:
+    (): RedactingHeaderFilter
+    patterns:
+      - user.email
+      - authorization
+      - email
+formatters:
+  plaintext:
+    format: "[%(asctime)s] %(process)d %(levelname)s %(name)s:%(funcName)s:%(lineno)s - %(message)s"
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: plaintext
+    level: INFO
+    stream: ext://sys.stdout
+    filters:
+      - maskfilter
+root:
+  level: INFO
+  handlers:
+    - console
+loggers:
+  uvicorn:
+    level: INFO
+  fastapi:
+    level: INFO
+  mongodb:
+    level: INFO
