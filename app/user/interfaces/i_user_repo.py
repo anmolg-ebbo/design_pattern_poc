@@ -1,11 +1,10 @@
+# app/user/interfaces/i_user_repo.py
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, Optional, List, Dict, Any
-from common.base_model import BaseDBModel
+from typing import Optional, List
+from app.common.base_repo import BaseRepository
 from app.user.user_model import User, UserStatus
-from common.base_repo import IBaseRepository
-T = TypeVar('T', bound=BaseDBModel)
 
-class IUserRepository(IBaseRepository[User], ABC):
+class IUserRepository(BaseRepository[User], ABC):
     @abstractmethod
     async def get_by_email(self, email: str) -> Optional[User]:
         pass

@@ -1,9 +1,9 @@
 # app/common/base_repo.py
 from typing import TypeVar, Generic, List, Optional, Type, Dict, Any
 from pydantic import BaseModel
-from core.db.database import MongoDBConnection
 from datetime import datetime
 import uuid
+from core.db.database import MongoDBConnection
 
 T = TypeVar('T', bound=BaseModel)
 

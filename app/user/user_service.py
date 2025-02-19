@@ -2,10 +2,11 @@
 from typing import Optional, List, Dict, Any
 from fastapi import HTTPException
 import bcrypt
+from app.user.interfaces.i_user_service import IUserService
 from app.user.user_model import User
 from app.user.user_repo import UserRepository
 
-class UserService:
+class UserService(IUserService):
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
 
